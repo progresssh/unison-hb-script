@@ -1,36 +1,42 @@
-const jobDiv = document.getElementById("unison-job-openings");
-const placeholder = document.getElementById("unison-placeholder");
+function fetchJobOpenings() {
+  const jobDiv = document.getElementById("unison-job-openings");
+  const placeholder = document.getElementById("unison-placeholder");
 
-async function fetchJobOpenings() {
   if (!jobDiv) {
     console.error(
       'Please add an element with this specific id: "unison-job-openings"'
     );
   }
 
-  const res = await fetch(
-    "https://api.ashbyhq.com/posting-api/job-board/UNISON"
-  );
-  const data = await res.json();
+  try {
+    fetch("https://api.ashbyhq.com/posting-api/job-board/UNISON")
+      .then((res) => res.json())
+      .then((data) => {
+        data.jobs.map((job) => {
+          const element = document.createElement("div");
+          const jobParagraph = document.createElement("h2");
+          const link = document.createElement("a");
+          const span = document.createElement("span");
 
-  data.jobs.map((job) => {
-    const element = document.createElement("div");
-    const jobParagraph = document.createElement("h2");
-    const link = document.createElement("a");
+          link.href = job.jobUrl;
+          link.target = "_blank";
+          link.innerText = "→ Read More";
+          span.style.color = "#2e3192";
+          jobParagraph.innerText = `${job.title}\nSan Francisco, CA / Mountain View, CA\n`;
 
-    link.href = job.jobUrl;
-    link.target = "_blank";
-    link.innerText = "→ Read More";
-    jobParagraph.innerText = `${job.title}\nSan Francisco, CA / Mountain View, CA\n`;
+          if (placeholder) {
+            placeholder.remove();
+          }
 
-    if (placeholder) {
-      placeholder.remove();
-    }
-
-    element.appendChild(jobParagraph);
-    element.appendChild(link);
-    jobDiv.appendChild(element);
-  });
+          span.appendChild(link);
+          element.appendChild(jobParagraph);
+          element.appendChild(span);
+          jobDiv.appendChild(element);
+        });
+      });
+  } catch (e) {
+    console.error(e.message);
+  }
 }
 
-window.document.onload = fetchJobOpenings;
+window.onload = fetchJobOpenings;
