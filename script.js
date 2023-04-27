@@ -39,4 +39,4 @@ function fetchJobOpenings() {
   }
 }
 
-window.onload = fetchJobOpenings;
+window.onpageshow = fetchJobOpenings;
