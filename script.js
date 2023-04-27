@@ -39,4 +39,5 @@ function fetchJobOpenings() {
   }
 }
 
-window.onpageshow = fetchJobOpenings;
+window.onload = fetchJobOpenings;
+window.onunload = () => console.log("unload");
