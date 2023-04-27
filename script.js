@@ -1,4 +1,4 @@
-function fetchJobOpenings() {
+const fetchJobOpenings = () => {
   const jobDiv = document.getElementById("unison-job-openings");
   const placeholder = document.getElementById("unison-placeholder");
 
@@ -37,7 +37,7 @@ function fetchJobOpenings() {
   } catch (e) {
     console.error(e.message);
   }
-}
+};
 
 window.onload = fetchJobOpenings;
 window.onunload = () => console.log("unload");
