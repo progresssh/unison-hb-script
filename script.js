@@ -39,5 +39,5 @@ const fetchJobOpenings = () => {
   }
 };
 
-window.onload = fetchJobOpenings;
 window.onunload = () => console.log("unload");
+window.onload = fetchJobOpenings;
