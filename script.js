@@ -39,5 +39,19 @@ const fetchJobOpenings = () => {
   }
 };
 
-window.onunload = () => console.log("unload");
-window.onload = fetchJobOpenings;
+const observeUrlChange = () => {
+  let oldHref = document.location.href;
+  const body = document.querySelector("body");
+  const observer = new MutationObserver((mutations) => {
+    mutations.forEach(() => {
+      if (oldHref !== document.location.href) {
+        oldHref = document.location.href;
+        console.log("changed!");
+      }
+    });
+  });
+  observer.observe(body, { childList: true, subtree: true });
+};
+
+window.onload = observeUrlChange;
+// window.onunload = () => console.log("unload");
