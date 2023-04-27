@@ -1,4 +1,4 @@
-let jobDiv = document.getElementById("unison-job-openings");
+const jobDiv = document.getElementById("unison-job-openings");
 
 async function fetchJobOpenings() {
   const res = await fetch(
@@ -7,9 +7,9 @@ async function fetchJobOpenings() {
   const data = await res.json();
 
   data.jobs.map((job) => {
-    let element = document.createElement("div");
-    let jobParagraph = document.createElement("p");
-    let link = document.createElement("a");
+    const element = document.createElement("div");
+    const jobParagraph = document.createElement("p");
+    const link = document.createElement("a");
 
     link.href = job.jobUrl;
     link.target = "_blank";
