@@ -44,9 +44,12 @@ const observeUrlChange = () => {
   const body = document.querySelector("body");
   const observer = new MutationObserver((mutations) => {
     mutations.forEach(() => {
-      if (oldHref !== document.location.href) {
+      if (
+        oldHref !== document.location.href &&
+        document.location.href.search("careers")
+      ) {
         oldHref = document.location.href;
-        console.log("changed!");
+        fetchJobOpenings();
       }
     });
   });
@@ -54,4 +57,3 @@ const observeUrlChange = () => {
 };
 
 window.onload = observeUrlChange;
-// window.onunload = () => console.log("unload");
