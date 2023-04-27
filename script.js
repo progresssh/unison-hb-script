@@ -17,6 +17,7 @@ const fetchJobOpenings = () => {
           const jobParagraph = document.createElement("h2");
           const link = document.createElement("a");
           const span = document.createElement("span");
+          const br = document.createElement("br");
 
           link.href = job.jobUrl;
           link.target = "_blank";
@@ -30,6 +31,7 @@ const fetchJobOpenings = () => {
 
           span.appendChild(link);
           element.appendChild(jobParagraph);
+          element.appendChild(br);
           element.appendChild(span);
           jobDiv.appendChild(element);
         });
