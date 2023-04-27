@@ -12,7 +12,7 @@ const fetchJobOpenings = () => {
     fetch("https://api.ashbyhq.com/posting-api/job-board/UNISON")
       .then((res) => res.json())
       .then((data) => {
-        data.jobs.map((job) => {
+        data.jobs.forEach((job) => {
           const element = document.createElement("div");
           const jobParagraph = document.createElement("h2");
           const link = document.createElement("a");
@@ -33,6 +33,9 @@ const fetchJobOpenings = () => {
           element.appendChild(span);
           jobDiv.appendChild(element);
         });
+
+        const scaffolding = document.querySelector(`[data-set="Scaffolding"]`);
+        scaffolding.style.height = "unset";
       });
   } catch (e) {
     console.error(e.message);
@@ -56,4 +59,5 @@ const observeUrlChange = () => {
   observer.observe(body, { childList: true, subtree: true });
 };
 
-window.onload = observeUrlChange;
+addEventListener("load", observeUrlChange);
+addEventListener("load", fetchJobOpenings);
