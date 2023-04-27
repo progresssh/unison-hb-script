@@ -1,4 +1,4 @@
-let jobDiv = document.getElementById("unison-job-openings-children");
+let jobDiv = document.getElementById("unison-job-openings");
 
 async function fetchJobOpenings() {
   const res = await fetch(
@@ -7,10 +7,17 @@ async function fetchJobOpenings() {
   const data = await res.json();
 
   data.jobs.map((job) => {
-    let element = document.createElement("a");
-    element.href = job.jobUrl;
-    element.target = "_blank";
-    element.innerText = `${job.title}\nSan Francisco, CA / Mountain View, CA`;
+    let element = document.createElement("div");
+    let jobParagraph = document.createElement("p");
+    let link = document.createElement("a");
+
+    link.href = job.jobUrl;
+    link.target = "_blank";
+    link.innerText = "→ Read More";
+    jobParagraph.innerText = `${job.title}\nSan Francisco, CA / Mountain View, CA\n`;
+
+    element.appendChild(jobParagraph);
+    element.appendChild(link);
     jobDiv.appendChild(element);
   });
 }
