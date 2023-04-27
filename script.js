@@ -15,7 +15,7 @@ async function fetchJobOpenings() {
 
   data.jobs.map((job) => {
     const element = document.createElement("div");
-    const jobParagraph = document.createElement("p");
+    const jobParagraph = document.createElement("h2");
     const link = document.createElement("a");
 
     link.href = job.jobUrl;
@@ -33,4 +33,4 @@ async function fetchJobOpenings() {
   });
 }
 
-window.onload = fetchJobOpenings;
+window.document.onload = fetchJobOpenings;
