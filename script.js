@@ -13,7 +13,7 @@ const fetchJobOpenings = () => {
       .then((res) => res.json())
       .then((data) => {
         data.jobs.forEach((job) => {
-          const parentElement = document.createElement("h2");
+          const element = document.createElement("h2");
           const jobParagraph = document.createElement("h2");
           const link = document.createElement("a");
           const span = document.createElement("span");
