@@ -18,12 +18,14 @@ const fetchJobOpenings = () => {
           const link = document.createElement("a");
           const span = document.createElement("span");
           const br = document.createElement("br");
+          const br2 = document.createElement("br");
 
           link.href = job.jobUrl;
           link.target = "_blank";
           link.innerText = "→ Read More";
           link.style.color = "#ffce00";
           link.style.fontSize = "1.5rem";
+          link.style.fontWeight = "unset";
           span.style.color = "#2e3192";
           jobParagraph.innerText = `${job.title}\nSan Francisco, CA / Mountain View, CA\n`;
 
@@ -35,7 +37,7 @@ const fetchJobOpenings = () => {
           element.appendChild(jobParagraph);
           element.appendChild(br);
           element.appendChild(span);
-          element.appendChild(br);
+          element.appendChild(br2);
           jobDiv.appendChild(element);
         });
 
