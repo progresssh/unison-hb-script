@@ -13,7 +13,7 @@ const fetchJobOpenings = () => {
       .then((res) => res.json())
       .then((data) => {
         data.jobs.forEach((job) => {
-          const element = document.createElement("div");
+          const parentElement = document.createElement("h2");
           const jobParagraph = document.createElement("h2");
           const link = document.createElement("a");
           const span = document.createElement("span");
@@ -24,7 +24,6 @@ const fetchJobOpenings = () => {
           link.target = "_blank";
           link.innerText = "→ Read More";
           link.style.color = "#ffce00";
-          link.style.fontSize = "1.5rem";
           link.style.fontWeight = "normal";
           span.style.color = "#2e3192";
           jobParagraph.innerText = `${job.title}\nSan Francisco, CA / Mountain View, CA\n`;
