@@ -25,7 +25,7 @@ const fetchJobOpenings = () => {
           link.innerText = "→ Read More";
           link.style.color = "#ffce00";
           link.style.fontSize = "1.5rem";
-          link.style.fontWeight = "unset";
+          link.style.fontWeight = "normal";
           span.style.color = "#2e3192";
           jobParagraph.innerText = `${job.title}\nSan Francisco, CA / Mountain View, CA\n`;
 
