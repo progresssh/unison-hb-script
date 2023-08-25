@@ -19,6 +19,7 @@ const fetchJobOpenings = () => {
           const span = document.createElement("span");
           const br = document.createElement("br");
           const br2 = document.createElement("br");
+          const br3 = document.createElement("br");
 
           link.href = job.jobUrl;
           link.target = "_blank";
@@ -38,6 +39,7 @@ const fetchJobOpenings = () => {
           element.appendChild(span);
           element.appendChild(br2);
           jobDiv.appendChild(element);
+          element.appendChild(br3);
         });
 
         const scaffolding = document.querySelector(`[data-set="Scaffolding"]`);
